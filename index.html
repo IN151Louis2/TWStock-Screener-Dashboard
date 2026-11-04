@@ -1,0 +1,54 @@
+
+    <!DOCTYPE html>
+    <html lang="zh-TW">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>跌深優質股監控儀錶板</title>
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+        <style>
+            body { font-family: 'Microsoft JhengHei', sans-serif; padding: 20px; background-color: #f8f9fa; }
+            h2 { color: #333; }
+            .container { max-width: 1200px; margin: 0 auto; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+            .highlight-red { color: #d9534f; font-weight: bold; }
+            .highlight-green { color: #5cb85c; font-weight: bold; }
+            a { color: #0275d8; text-decoration: none; }
+            a:hover { text-decoration: underline; }
+            .update-time { color: #666; font-size: 0.9em; margin-bottom: 20px; }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h2>📉 跌深反彈與法人進場監控儀錶板</h2>
+            <div class="update-time">最後更新時間：2026-11-04 18:36:01</div>
+            <table id="stockTable" class="display" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>代碼名稱</th>
+                        <th>產業類別</th>
+                        <th>最新股價</th>
+                        <th>120日高點</th>
+                        <th>回檔跌幅</th>
+                        <th>近月均量(張)</th>
+                        <th>近5日外資買賣超</th>
+                        <th>近5日投信買賣超</th>
+                    </tr>
+                </thead>
+                <tbody>
+    
+                </tbody>
+            </table>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+        <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('#stockTable').DataTable({
+                    "order": [[ 4, "asc" ]], // 預設依回檔跌幅排序
+                    "language": { "url": "//cdn.datatables.net/plug-ins/1.13.6/i18n/zh-HANT.json" }
+                });
+            });
+        </script>
+    </body>
+    </html>
+    
