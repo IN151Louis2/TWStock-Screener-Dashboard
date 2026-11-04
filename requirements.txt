@@ -1,0 +1,3 @@
+FinMind>=1.5.4
+pandas>=1.3.0
+requests
