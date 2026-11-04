@@ -1,0 +1,35 @@
+name: Taiwan Stock Deep Value Screener
+
+on:
+  schedule:
+    # 每天的 10:00 到 15:00 (UTC)，相當於台灣時間 18:00 到 23:00，每小時執行一次
+    - cron: '0 10-15 * * *'
+  workflow_dispatch: # 允許你隨時手動點擊執行測試
+
+jobs:
+  run-screener:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install Requirements
+        run: pip install -r requirements.txt
+
+      - name: Run Screener Script
+        env:
+          FINMIND_TOKEN: ${{ secrets.FINMIND_TOKEN }}
+        run: python screener.py
+
+      - name: Commit and Push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add state.json results.json index.html || true
+          git commit -m "Auto-update: Screener progress and dashboard" || true
+          git push
